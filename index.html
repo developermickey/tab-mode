@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Simple Tab content area with HTML, CSS and jQuery</title>
+    <meta charset="UTF-8">
+    <link href="style.css" rel="stylesheet" type="text/css">
+
+
+    <style>* {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+    html, body {
+        width: 100%;
+        height: 100%;
+    }
+    #main {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .tabs{
+        width: 980px;
+        height: 500px;
+        object-fit: cover;
+        object-position: 50% 50%;
+        margin:0 auto;
+        background-image: url(https://static.wixstatic.com/media/f49c9e_d4ddf95a39b942cfaa0f6ce9e558ecb1~mv2.jpg);
+        background-size: cover;
+    }
+    
+    /* tab list item */
+    .tabs .tabs-list{
+        list-style:none;
+        margin:0px;
+        padding:0px;
+    }
+    .tab {
+        width: 100%;
+        height: 100%;
+        display: flex;
+    }
+    .tab #left{
+        width: 70%;
+        height: 100%;
+    }
+    .tab #left p {
+       font-size: 22px;
+       font-family: Arial, Helvetica, sans-serif;
+       font-weight: normal !important;
+       line-height: 28px;
+       text-align: center;
+        margin-top: 50px;
+    } 
+    .tab #right{
+        width: 30%;
+        height: 100%;
+    }
+    .tab #right img{
+        position: absolute;
+        top: 0px;
+        right: 150px;
+        width: 500px;
+    }
+    
+    .tabs .tabs-list li{
+        float:left;
+        margin:0px;
+        margin-right:50px !important;
+        padding:10px 5px;
+        text-align: center;
+        background-color:transparent;
+        opacity: 0.4;
+        border-radius:3px;
+        z-index: 99999999999999999 !important;
+    
+    }
+    .tabs .tabs-list li:hover{
+        cursor:pointer;
+        background-color: rgba(0, 0, 0, 0);
+        opacity: 1;
+    }
+    .tabs .tabs-list li a{
+        text-decoration: none;
+        color:white;
+        z-index: 99999999999999999 !important;
+    
+    }
+    
+    /* Tab content section */
+    .tabs .tab{
+        display: none;
+        width: 100%;
+        height: 100vh;
+        border-radius:3px;
+        padding:20px 15px;
+        background-color:transparent;
+        color:#fff;;
+        clear:both;
+    }
+    .tabs .tab h3{
+        border-bottom:3px solid #fff;
+        letter-spacing:1px;
+        font-weight:normal;
+        padding:5px;
+    }
+    .tabs .tab p{
+        line-height:20px;
+        letter-spacing: 1px;
+    }
+    
+    /* When active state */
+    .active{
+        display:block !important;
+    }
+    .tabs .tabs-list li.active{
+        color: #fff !important;
+        opacity: 1;
+    }
+    .active a{
+        color:black !important;
+    }
+    #himg1 {
+        display: flex;
+        position: absolute;
+        top: 13px;
+    }
+    
+    img#himg2 {
+        display: none;
+        position: absolute;
+        top: 13px;
+    }
+    img#himg3 {
+        display: none;
+        position: absolute;
+        top: 13px;
+    }
+    img#himg4 {
+        display: none;
+        position: absolute;
+        top: 13px;
+    }
+    img#himg5 {
+        display: none;
+        position: absolute;
+        top: 13px;
+    }
+    #img5{
+    
+        display: none;
+        position: absolute;
+        top: 13px;
+    }
+    /* media query */
+    @media screen and (max-width:360px){
+        .tabs{
+            margin:0;
+            width:96%;
+        }
+        .tabs .tabs-list li{
+            width:80px;
+        }
+    }
+    
+    
+    </style>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+    <script type="text/javascript">
+        $(document).ready(function(){
+
+            $(".tabs-list li a").click(function(e){
+                e.preventDefault();
+            });
+
+            $(".tabs-list li").click(function(){
+                var tabid = $(this).find("a").attr("href");
+                $(".tabs-list li,.tabs div.tab").removeClass("active");   // removing active class from tab and tab content
+                $(".tab").hide();   // hiding open tab
+                $(tabid).show();    // show tab
+                $(this).addClass("active"); //  adding active class to clicked tab
+
+            });
+
+        });
+    </script>
+    <title></title>
+</head>
+<body>
+    <div id="main">
+    <div class="tabs">
+        <ul class="tabs-list">
+            <li class="active"><a href="#tab1"><img id="img1" src="./img/AssassinWhite.png" width="100" alt=""><img id="himg1" src="./img/ring.png" width="100" alt=""></a></li>
+            <li ><a href="#tab2"><img id="img2" src="./img/Evaderwhite.png" width="100" alt=""><img id="himg2" src="./img/ring.png" width="100" alt=""></a></li>
+            <li ><a href="#tab3"><img id="img3" src="./img/magewhite.png" width="100" alt=""><img id="himg3" src="./img/ring.png" width="100" alt=""></a></li>
+            <li ><a href="#tab4"><img id="img4" src="./img/tankwhite.png" width="100" alt=""><img id="himg4" src="./img/ring.png" width="100" alt=""></a></li>
+            <li ><a href="#tab5"><img id="img5" src="./img/WarriorWhite.png" width="100" alt=""><img id="himg5" src="./img/ring.png" width="100" alt=""></a></li>
+        </ul>
+
+        <div id="tab1" class="tab active">
+            <div id="left">
+            <p>
+                Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean. A small river named Duden flows by their place and supplies it with the necessary
+            </p>
+        </div>
+            <div id="right">
+            <img src="https://static.wixstatic.com/media/f49c9e_cc662b141c9d4cd28222f41543745e36~mv2.gif" alt="" srcset="">
+        </div>
+        </div>
+        <div id="tab2" class="tab">
+            <div id="left">
+                <p>
+                    Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean. A small river named Duden flows by their place and supplies it with the necessary
+                </p>
+            </div>
+                <div id="right">
+                <img src="https://static.wixstatic.com/media/f49c9e_cc662b141c9d4cd28222f41543745e36~mv2.gif" alt="" srcset="">
+            </div>
+        </div>
+        <div id="tab3" class="tab">
+            <div id="left">
+                <p>
+                    Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean. A small river named Duden flows by their place and supplies it with the necessary
+                </p>
+            </div>
+                <div id="right">
+                <img src="https://static.wixstatic.com/media/f49c9e_cc662b141c9d4cd28222f41543745e36~mv2.gif" alt="" srcset="">
+            </div>
+        </div>
+        <div id="tab4" class="tab">
+            <div id="left">
+                <p>
+                    Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean. A small river named Duden flows by their place and supplies it with the necessary
+                </p>
+            </div>
+                <div id="right">
+                <img src="https://static.wixstatic.com/media/f49c9e_cc662b141c9d4cd28222f41543745e36~mv2.gif" alt="" srcset="">
+            </div>
+        </div>
+        <div id="tab5" class="tab">
+            <div id="left">
+            <p>
+                Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean. A small river named Duden flows by their place and supplies it with the necessary
+            </p>
+        </div>
+            <div id="right">
+            <img src="https://static.wixstatic.com/media/f49c9e_cc662b141c9d4cd28222f41543745e36~mv2.gif" alt="" srcset="">
+        </div>
+        </div>
+
+    </div>
+</div>
+
+
+    <script>
+        var flag = 0;
+        var himg1 = document.querySelector("#himg1");
+        var himg2 = document.querySelector("#himg2");
+        var himg3 = document.querySelector("#himg3");
+        var himg4 = document.querySelector("#himg4");
+        var himg5 = document.querySelector("#himg5");
+        var img1 = document.querySelector("#img1");
+        var img2 = document.querySelector("#img2");
+        var img3 = document.querySelector("#img3");
+        var img4 = document.querySelector("#img4");
+        var img5 = document.querySelector("#img5");
+        img1.addEventListener("click", function(){
+            if(flag === 0){
+            this.style.display = "flex";
+            document.querySelector("#himg1").style.display = "flex";
+            flag = 1;
+            }else{
+                document.querySelector("#himg1").style.display = "none";
+
+                this.style.display = "flex";
+            flag = 0;
+            }
+        });
+        img2.addEventListener("click", function(){
+            if(flag === 0){
+            this.style.display = "flex";
+            document.querySelector("#himg2").style.display = "flex";
+            flag = 1;
+            }else{
+                document.querySelector("#himg2").style.display = "none";
+                this.style.display = "flex";
+            flag = 0;
+            }
+        });
+        img3.addEventListener("click", function(){
+            if(flag === 0){
+            this.style.display = "flex";
+            document.querySelector("#himg3").style.display = "flex";
+            flag = 1;
+            }else{
+                document.querySelector("#himg3").style.display = "none";
+                this.style.display = "flex";
+            flag = 0;
+            }
+        });
+        img4.addEventListener("click", function(){
+            if(flag === 0){
+            this.style.display = "flex";
+            document.querySelector("#himg4").style.display = "flex";
+            flag = 1;
+            }else{
+                document.querySelector("#himg4").style.display = "none";
+                this.style.display = "flex";
+            flag = 0;
+            }
+        });
+        img5.addEventListener("click", function(){
+            if(flag === 0){
+            this.style.display = "flex";
+            document.querySelector("#himg5").style.display = "flex";
+            flag = 1;
+            }else{
+                document.querySelector("#himg5").style.display = "none";
+                this.style.display = "flex";
+            flag = 0;
+            }
+        });
+
+
+    </script>
+</body>
+</html>
